@@ -1,0 +1,91 @@
+
+
+
+// Despues de configurar el npm init, ingresar a la siguiente pagina:
+https://socket.io/
+// Presionar --> Get started
+// Instalar--> npm install express@4
+// Copiar y pegar lo que este en el paso --> Once it's installed we can create an index.js file that will set up our application.	y pegarlo en el archivo index.js
+
+
+// Luego en la terminal ingresar el sig. comando --> node index.js
+// En algun navegador ingresamos a --> http://localhost:3000/
+// Y este debera mostrar por defecto el mensaje --> Hello world
+
+
+// En la documentacion de Socket.io, en la seccion --> Integrating Socket.IO	, copiar y pegar el comando En la terminal:
+npm install socket.io
+
+
+// Copiar y pegar el codigo de abajo de --> That will install the module and add the dependency to package.json. Now let’s edit index.js to add it:
+// Y remplazarlo por todo el codigo que anteriormente se agrego en index.js
+
+
+// En la linea 9 --> res.sendFile(__dirname + '/index.html');
+// Remplazar por el sig. codigo --> res.write(`<h1>Socket IO Start on Port: ${PORT}</h1>`);
+
+// Agregamos una nueva constante --> const PORT = process.env.PORT || 3000;
+
+
+// Finalmente el codigo quedaria de la sig. manera:
+
+const express = require('express');
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
+const PORT = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+    res.write(`<h1>Socket IO Start on Port: ${PORT}</h1>`);
+    res.end();
+});
+
+io.on('connection', (socket) => {
+    console.log('a user connected');
+
+    socket.on('message', (ms) => {
+      io.emit('message', ms);
+    });
+    
+});
+
+server.listen(PORT, () => {
+  console.log('listening on *:3000');
+});
+
+
+
+
+
+
+
+
+
+
+
+//  Ingresar a la sig. pagina: https://mvnrepository.com/
+// Buscar --> socket.io
+// Ingresar a socket io client y seleccionar: https://mvnrepository.com/artifact/io.socket/socket.io-client/2.0.1
+
+// Copiar y pegar los sig. codigos en java:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
